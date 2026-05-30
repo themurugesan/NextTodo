@@ -35,7 +35,9 @@ export default function Home() {
       .on('postgres_changes', { event: '*', schema: 'public', table: 'todos' }, fetchTodos)
       .subscribe()
 
-    return () => supabase.removeChannel(channel)
+    return () => {
+      supabase.removeChannel(channel)
+    }
   }, [])
 
   // Add Todo
